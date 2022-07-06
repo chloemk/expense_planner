@@ -46,9 +46,12 @@ class MyHomePage extends StatelessWidget {
             child:
                 Container(width: double.infinity, child: const Text('Chart!')),
           ),
-          const Card(
-            color: Colors.red,
-            child: Text('list of tx!'),
+          Column(
+            children: transactions
+                .map((transaction) => Card(
+                      child: Text(transaction.title),
+                    ))
+                .toList(),
           )
         ],
       ),

@@ -18,6 +18,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  MyHomePage({Key? key}) : super(key: key);
+
   final List<Transaction> transactions = [
     Transaction(
         id: 't1',
@@ -30,8 +32,8 @@ class MyHomePage extends StatelessWidget {
         amount: 16.53,
         date: DateTime.now())
   ];
-
-  MyHomePage({Key? key}) : super(key: key);
+  late String titleInput;
+  late String amountInput;
 
   @override
   Widget build(BuildContext context) {
@@ -55,15 +57,20 @@ class MyHomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
-                  const TextField(
-                    decoration: InputDecoration(labelText: 'Title'),
+                  TextField(
+                    decoration: const InputDecoration(labelText: 'Title'),
+                    onChanged: (value) => titleInput = value,
                   ),
-                  const TextField(
-                    decoration: InputDecoration(labelText: 'Amount'),
+                  TextField(
+                    decoration: const InputDecoration(labelText: 'Amount'),
+                    onChanged: (value) => amountInput = value,
                   ),
                   TextButton(
                     style: TextButton.styleFrom(primary: Colors.purple),
-                    onPressed: () {},
+                    onPressed: () {
+                      print(titleInput);
+                      print(amountInput);
+                    },
                     child: const Text('Add Transaction'),
                   )
                 ],

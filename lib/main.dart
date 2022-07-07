@@ -1,4 +1,7 @@
+import 'package:expense_planner/widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
+
+import './widgets/user_transactions.dart';
 
 void main() => runApp(const MyApp());
 
@@ -35,6 +38,7 @@ class MyHomePage extends StatelessWidget {
             child: const Card(
                 color: Colors.blue, elevation: 5, child: Text('Chart!')),
           ),
+          UserTransactions()
         ],
       ),
     );

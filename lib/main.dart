@@ -40,12 +40,13 @@ class MyHomePage extends StatelessWidget {
         title: const Text('Flutter App'),
       ),
       body: Column(
+        // mainAxisAlignment: MainAxisAlignment.start, ! default
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Card(
-            color: Colors.blue,
-            elevation: 5,
-            child:
-                Container(width: double.infinity, child: const Text('Chart!')),
+          Container(
+            width: double.infinity,
+            child: const Card(
+                color: Colors.blue, elevation: 5, child: Text('Chart!')),
           ),
           Column(
             children: transactions

@@ -1,7 +1,8 @@
-import 'package:expense_planner/widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
 
-import './widgets/user_transactions.dart';
+import '../models/transaction.dart';
+import 'widgets/new_transaction.dart';
+import 'widgets/transaction_list.dart';
 
 void main() => runApp(const MyApp());
 
@@ -10,18 +11,55 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter App',
       home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  MyHomePage({Key? key}) : super(key: key);
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
 
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final List<Transaction> _userTransactions = [
+    Transaction(
+        id: 't1',
+        title: 'New Shoes for dog',
+        amount: 69.99,
+        date: DateTime.now()),
+    Transaction(
+        id: 't2',
+        title: 'Weekly Groceries',
+        amount: 16.53,
+        date: DateTime.now())
+  ];
+
+  void _addNewTransaction(String txTitle, double txAmount) {
+    final newTx = Transaction(
+        id: DateTime.now.toString(),
+        title: txTitle,
+        amount: txAmount,
+        date: DateTime.now());
+
+    setState(() {
+      _userTransactions.add(newTx);
+    });
+  }
+
+  // starts the process of adding a new transaction
+  void _startAddNewTransaction(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        return NewTransaction(_addNewTransaction);
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +69,7 @@ class MyHomePage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add),
-            onPressed: () {
-              // TODO
-            },
+            onPressed: () => _startAddNewTransaction(context),
           )
         ],
       ),
@@ -47,16 +83,14 @@ class MyHomePage extends StatelessWidget {
               child: const Card(
                   color: Colors.blue, elevation: 5, child: Text('Chart!')),
             ),
-            const UserTransactions()
+            TransactionList(_userTransactions)
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.add),
-          onPressed: () {
-            // TODO
-          }),
+          onPressed: () => _startAddNewTransaction(context)),
     );
   }
 }

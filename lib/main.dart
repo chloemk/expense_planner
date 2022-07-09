@@ -28,6 +28,14 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter App'),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              // TODO
+            },
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -39,7 +47,7 @@ class MyHomePage extends StatelessWidget {
               child: const Card(
                   color: Colors.blue, elevation: 5, child: Text('Chart!')),
             ),
-            UserTransactions()
+            const UserTransactions()
           ],
         ),
       ),

@@ -105,10 +105,10 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
+            const SizedBox(
               width: double.infinity,
-              child: const Card(
-                  color: Colors.blue, elevation: 5, child: Text('Chart!')),
+              child:
+                  Card(color: Colors.blue, elevation: 5, child: Text('Chart!')),
             ),
             TransactionList(_userTransactions)
           ],

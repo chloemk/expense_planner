@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expenses',
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal)
               .copyWith(secondary: Colors.amber),
           fontFamily: 'Quicksand',
           textTheme: ThemeData.light().textTheme.copyWith(
@@ -103,7 +103,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.start, ! default
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(

@@ -11,7 +11,6 @@ class NewTransaction extends StatefulWidget {
 
 class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
-
   final amountController = TextEditingController();
 
   void submitData() {
@@ -48,7 +47,7 @@ class _NewTransactionState extends State<NewTransaction> {
               onSubmitted: (_) => submitData(),
             ),
             TextButton(
-              style: TextButton.styleFrom(primary: Colors.purple),
+              style: TextButton.styleFrom(primary: Colors.teal),
               onPressed: submitData,
               child: const Text('Add Transaction'),
             )

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/transaction.dart';
+import '../utils/randomStringGenerator.dart';
 import 'widgets/chart.dart';
 import 'widgets/new_transaction.dart';
 import 'widgets/transaction_list.dart';
@@ -69,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _addNewTransaction(
       String txTitle, double txAmount, DateTime chosenDate) {
     final newTx = Transaction(
-        id: DateTime.now.toString(),
+        id: RandomStringGenerator.generateRandomString(10),
         title: txTitle,
         amount: txAmount,
         date: chosenDate);

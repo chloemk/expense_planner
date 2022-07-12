@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class NewTransaction extends StatefulWidget {
-  final void Function(String, double) addTx;
+  final void Function(String, double, DateTime) addTx;
 
   const NewTransaction(this.addTx, {Key? key}) : super(key: key);
 

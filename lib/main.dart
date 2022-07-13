@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import '../models/transaction.dart';
@@ -149,7 +151,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     const Text('Show Chart'),
-                    Switch(
+                    Switch.adaptive(
+                        activeColor: Theme.of(context).colorScheme.primary,
                         value: _showChart,
                         onChanged: (value) => _isShowChart(value)),
                   ],
@@ -177,10 +180,10 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: !_showChart
-            ? FloatingActionButton(
+        floatingActionButton: Platform.isIOS
+            ? const SizedBox.shrink()
+            : FloatingActionButton(
                 child: const Icon(Icons.add),
-                onPressed: () => _startAddNewTransaction())
-            : null);
+                onPressed: () => _startAddNewTransaction()));
   }
 }

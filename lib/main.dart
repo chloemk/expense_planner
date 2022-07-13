@@ -6,7 +6,16 @@ import 'widgets/chart.dart';
 import 'widgets/new_transaction.dart';
 import 'widgets/transaction_list.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  // portrait 모드만 가능하게 설정하는 것
+  // WidgetsFlutterBinding.ensureInitialized();
+  //
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  //   DeviceOrientation.portraitDown,
+  // ]);
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
